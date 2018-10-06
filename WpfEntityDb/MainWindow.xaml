@@ -1,0 +1,96 @@
+﻿<Window x:Class="WpfEntityDb.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfEntityDb"
+        mc:Ignorable="d"
+        Icon="Imagenes/Solaris.ico"
+        Title="Ventana principal" Height="450" Width="525">
+    <Window.Resources>
+        <Style TargetType="Button" >
+            <Setter Property="Width" Value="135"/>
+            <Setter Property="Height" Value="30" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Width" Value="155" />
+                    <Setter Property="Height" Value="40" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Red" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontSize" Value="15" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="MenuItem" >
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="30" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Width" Value="155" />
+                    <Setter Property="Height" Value="26" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Orange" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontSize" Value="11" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+    </Window.Resources>
+
+    <Grid Background="Azure">
+        <Border Margin="10" BorderBrush="Black" BorderThickness="5,5,1,1" CornerRadius="8,8,8,8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="43*" />
+                    <RowDefinition Height="23*" />
+                </Grid.RowDefinitions>
+                <Menu Grid.Row="0" HorizontalAlignment="Left" Height="28" Margin="5,5,0,0" VerticalAlignment="Top" Width="478" RenderTransformOrigin="0.5,0.5">
+                    <MenuItem Header="Archivos">
+                        <MenuItem Header="Razas" Height="25" Width="150" Click="Razas" Cursor="AppStarting" >
+                            <MenuItem.Icon>
+                               <Image Source="Imagenes/download1.ico"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Colores" Height="25" Width="150" Click="Colores">
+                            <MenuItem.Icon>
+                                <Image Source="Imagenes/db_sql_procedure16_h.ico"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Animales" Height="25" Width="150" Click="Animales" >
+                            <MenuItem.Icon>
+                                <Image Source="Imagenes/epiphany.ico"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Salir" Height="25" Width="150" Click="Salir">
+                            <MenuItem.Icon>
+                                <Image Source="Imagenes/post_square16_h.ico"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+                <StackPanel Grid.Row="1" Margin="25,18,24.8,22.4" Name="stackPanel1" >
+                    <Button  Content="Razas"  Height="30" Margin="0,0,0,10" Click="Razas" />
+                    <Button Content="Colores" Height="30" Margin="0,10" Click="Colores" />
+                    <Button Content="Animales" Height="30" Margin="0,10" Click="Animales" />
+                    <Button Content="Salir" Height="30" Margin="0,10,0,0" Click="Salir"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3">
+                    <ComboBox Name = "comboBox"  Margin = "5" Width = "135">
+                        <ComboBoxItem Content = "Selecciones el item" IsSelected="True" />
+                        <ComboBoxItem Content = "Razas" Selected="Razas" />
+                        <ComboBoxItem  Content = "Colores" Selected="Colores" />
+                        <ComboBoxItem Content = "Animales" Selected="Animales" />
+                        <ComboBoxItem Content = "Informes" Selected="Informes" />
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

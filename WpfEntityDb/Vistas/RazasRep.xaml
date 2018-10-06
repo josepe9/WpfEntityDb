@@ -1,0 +1,137 @@
+﻿<Window x:Class="WpfEntityDb.Vistas.RazasRep"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfEntityDb.Vistas"
+        xmlns:co="clr-namespace:WpfEntityDb.ViewModel"
+        mc:Ignorable="d"
+        Title="Consultas" Height="700" Width="900">
+
+    <Window.DataContext>
+        <co:ConsultasVM/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="702*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="336*"/>
+            <RowDefinition Height="335*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Button Command="{Binding cmd_ConRaz}" Margin="5">Razas</Button>
+            <Button Command="{Binding cmd_ConCol}" Margin="5">Colores</Button>
+            <Button Command="{Binding cmd_ConAni}" Margin="5">Animales</Button>
+            <Button Click="Salir" Margin="5">Salir</Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <StackPanel>
+                <Border Margin="5,5,5.4,5" BorderBrush="BurlyWood" BorderThickness="3,3,1,1" CornerRadius="8,8,8,8" Height="103" >
+                    <ListBox ItemsSource="{Binding ListaR}" SelectedItem="{Binding Raza}" Margin="-0.2,-0.2,0.2,0.6"  >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" Width="200" Foreground="Blue" />
+                                    <TextBlock Text="{Binding Detalle}" Width="400" Foreground="Blue" />
+                                    <TextBlock Text="{Binding RazaID}" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+            <StackPanel>
+                <Border Margin="5" BorderBrush="Green" BorderThickness="3,3,1,1" CornerRadius="8,8,8,8" Height="100" >
+                    <ListBox ItemsSource="{Binding ListaC}" SelectedItem="{Binding Color}" Margin="-0.2,-0.2,0,0"  >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" Width="200" Foreground="Green" />
+                                    <TextBlock Text="{Binding ColorID}" Foreground="Green"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+            <StackPanel>
+                <Border Margin="5,5,5.4,5" BorderBrush="Tomato" BorderThickness="3,3,1,1" CornerRadius="8,8,8,8" Height="97" >
+                    <ListBox ItemsSource="{Binding ListaA}" SelectedItem="{Binding Animal}" Margin="-0.2,-0.2,0,0.8"  >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" Width="400" Foreground="Blue" />
+                                    <TextBlock Text="{Binding  FechaNac}" Width="150" Foreground="Blue" />
+                                    <TextBlock Text="{Binding AnimalID}" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+            <DataGrid ItemsSource="{Binding ListaR}" Name="dataGrid1"  HorizontalAlignment="Left" Height="127" 
+                  Margin="9.8,10,0,0"  VerticalAlignment="Top" Width="683" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="200">
+                        <DataGridTemplateColumn.Header >
+                            <TextBlock  Text="Nombre" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Nombre" Text="{Binding Nombre}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate >
+                            <DataTemplate>
+                                <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="390">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock  Text="Detalle" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Detalle" Text="{Binding Detalle}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate >
+                            <DataTemplate>
+                                <TextBox Text="{Binding Detalle, UpdateSourceTrigger=LostFocus}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="85">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock  Text="Raza" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="RazaID" Text="{Binding RazaID}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate >
+                            <DataTemplate>
+                                <TextBox Text="{Binding RazaID, UpdateSourceTrigger=LostFocus}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Name="GridLocal" ItemsSource="{Binding ListaV}"  
+                      HorizontalAlignment="Left" Height="152"  VerticalAlignment="Top" 
+                      Width="683" Margin="5,5,0,5" IsReadOnly="True" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+            <Button Command="{Binding cmd_ConRGr}" Margin="5">Razas</Button>
+        </StackPanel>
+    </Grid>
+</Window>
