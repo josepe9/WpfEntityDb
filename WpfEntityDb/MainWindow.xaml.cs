@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using WpfEntityDb.Vistas;
-using WpfEntityDb.ViewModel;
 
 namespace WpfEntityDb
 {

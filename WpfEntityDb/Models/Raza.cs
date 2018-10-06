@@ -14,6 +14,7 @@ namespace WpfEntityDb.Models
         {
             return Nombre + " " + RazaID;
         }
+        
         public int RazaID { get { return razaId; } set { if (razaId != value) { razaId = value; OnPropertyChanged(); } } }
         private int razaId;
 
